@@ -1,0 +1,11 @@
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.exe
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.deps.json
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.runtimeconfig.json
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.runtimeconfig.dev.json
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.dll
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\bin\Debug\netcoreapp3.1\ProjectRPG.pdb
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.AssemblyInfoInputs.cache
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.AssemblyInfo.cs
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.dll
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.pdb
