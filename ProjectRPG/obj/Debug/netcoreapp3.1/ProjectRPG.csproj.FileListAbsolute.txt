@@ -9,3 +9,5 @@ C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\Project
 C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.AssemblyInfo.cs
 C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.dll
 C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.pdb
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\ProjectRPG\ProjectRPG\obj\Debug\netcoreapp3.1\ProjectRPG.genruntimeconfig.cache

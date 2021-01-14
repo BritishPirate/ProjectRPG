@@ -15,25 +15,13 @@ namespace ProjectRPG {
             int turncounter = 1;
             while(isEnemyAlive()) {
                 Printer.info(allyGrid, enemyGrid);
-                playerTurn();
+                new PCTurn(1, 1, this);
                 updateGrids();
                 if(!isEnemyAlive()) { break; }
-                enemyTurn();
+                new EnemyTurn(0, 1, this);
                 turncounter++;
             }
             Printer.victory();
-        }
-
-        private void playerTurn() { //Give coords of char taking turn?
-            Printer.playerTurn();
-            if(Console.ReadLine() == "a") { //INPUT
-                Attacks.attack(true, 0, 1, 1,this);
-            }
-        }
-
-        private void enemyTurn() { //Give coords of char taking turn?
-            Printer.enemyAttack();
-            Attacks.attack(false, 1, 1, 1, this);
         }
 
         private void updateGrids() {
