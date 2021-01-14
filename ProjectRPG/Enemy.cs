@@ -9,10 +9,12 @@ namespace ProjectRPG {
                 case EnemyType.Goblin:
                     this.name = "Goblin";
                     this.hp = 2;
+                    this.speed = 2;
                     break;
                 case EnemyType.Skeleton:
                     this.name = "Skeleton";
                     this.hp = 3;
+                    this.speed = 3;
                     break;
                 default:
                     break;

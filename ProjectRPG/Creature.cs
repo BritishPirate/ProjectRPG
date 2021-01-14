@@ -6,7 +6,7 @@ namespace ProjectRPG {
     class Creature {
         public string name { get; set; }
         public int hp { get; set; }
-
+        public int speed { get; set; }
         public bool isDead() {
             if(this == null) { return false; }
             if(this.hp <= 0) { return true; }

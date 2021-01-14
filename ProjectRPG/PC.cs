@@ -9,6 +9,7 @@ namespace ProjectRPG {
                 case pcs.Fighter:
                     this.name = "Fighter";
                     this.hp = 20;
+                    this.speed = 1;
                     break;
                 default:
                     break;
