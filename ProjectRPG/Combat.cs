@@ -52,26 +52,54 @@ namespace ProjectRPG {
             }
             return false;
         }
-
+        
         public void applyRegen(bool enemy, int x, int y) {
+            gain[] types = new gain[] { gain.natural, gain.regeneration };
             if(enemy) {
-                enemyGrid.grid[x][y].curHP += enemyGrid.grid[x][y].regenHP;
-                enemyGrid.grid[x][y].curMana += enemyGrid.grid[x][y].regenMana;
-                enemyGrid.grid[x][y].maxStam += enemyGrid.grid[x][y].regenStam;
+                gainHealth(enemy, x, y, enemyGrid.grid[x][y].regenHP, types);
+                gainMana(enemy, x, y, enemyGrid.grid[x][y].regenMana, types);
+                gainStam(enemy, x, y, enemyGrid.grid[x][y].regenStam, types);
             }
             else {
-                allyGrid.grid[x][y].curHP += allyGrid.grid[x][y].regenHP;
-                allyGrid.grid[x][y].curMana += allyGrid.grid[x][y].regenMana;
-                allyGrid.grid[x][y].maxStam += allyGrid.grid[x][y].regenStam;
+                gainHealth(enemy, x, y, allyGrid.grid[x][y].regenHP, types);
+                gainMana(enemy, x, y, allyGrid.grid[x][y].regenMana, types);
+                gainStam(enemy, x, y, allyGrid.grid[x][y].regenStam, types);
             }
         }
 
-        public void dealDamage(bool enemy, int x, int y, int damage) {
-            if(enemy) { enemyGrid.grid[x][y].curHP -= damage; }
-            else { allyGrid.grid[x][y].curHP -= damage; }
+        public void loseHealth(bool enemy, int x, int y, int amount, lose[] type) {
+            if(enemy) { enemyGrid.grid[x][y].curHP -= amount; }
+            else { allyGrid.grid[x][y].curHP -= amount; }
         }
 
-        public void loseStam(bool enemy, int x, int y, int amount) {
+        public void gainHealth(bool enemy, int x, int y, int amount, gain[] type) {
+            if(enemy) { enemyGrid.grid[x][y].curHP += amount; }
+            else { allyGrid.grid[x][y].curHP += amount; }
+        }
+
+        public void loseMana(bool enemy, int x, int y, int amount, lose[] type) {
+            if(enemy) {
+                enemyGrid.grid[x][y].curMana -= amount;
+                if(enemyGrid.grid[x][y].curMana < 0) { enemyGrid.grid[x][y].curMana = 0; }
+            }
+            else {
+                allyGrid.grid[x][y].curMana -= amount;
+                if(allyGrid.grid[x][y].curMana < 0) { allyGrid.grid[x][y].curMana = 0; }
+            }
+        }
+
+        public void gainMana(bool enemy, int x, int y, int amount, gain[] type) {
+            if(enemy) {
+                enemyGrid.grid[x][y].curMana += amount;
+                if(enemyGrid.grid[x][y].curMana > enemyGrid.grid[x][y].maxMana) { enemyGrid.grid[x][y].curMana = enemyGrid.grid[x][y].maxMana; }
+            }
+            else {
+                allyGrid.grid[x][y].curMana += amount;
+                if(allyGrid.grid[x][y].curMana > allyGrid.grid[x][y].maxMana) { allyGrid.grid[x][y].curMana = allyGrid.grid[x][y].maxMana; }
+            }
+        }
+
+        public void loseStam(bool enemy, int x, int y, int amount, lose[] type) {
             if(enemy) { 
                 enemyGrid.grid[x][y].curStam -= amount;
                 if(enemyGrid.grid[x][y].curStam < 0) { enemyGrid.grid[x][y].curStam = 0; }
@@ -82,16 +110,17 @@ namespace ProjectRPG {
             }
         }
 
-        public void loseMana(bool enemy, int x, int y, int amount) {
+        public void gainStam(bool enemy, int x, int y, int amount, gain[] type) {
             if(enemy) {
-                enemyGrid.grid[x][y].curMana -= amount;
-                if(enemyGrid.grid[x][y].curMana < 0) { enemyGrid.grid[x][y].curMana = 0; }
+                enemyGrid.grid[x][y].curStam += amount;
+                if(enemyGrid.grid[x][y].curStam > enemyGrid.grid[x][y].maxStam) { enemyGrid.grid[x][y].curStam = enemyGrid.grid[x][y].maxStam; }
             }
             else {
-                allyGrid.grid[x][y].curMana -= amount;
-                if(allyGrid.grid[x][y].curMana < 0) { allyGrid.grid[x][y].curMana = 0; }
+                allyGrid.grid[x][y].curStam += amount;
+                if(allyGrid.grid[x][y].curStam > allyGrid.grid[x][y].maxStam) { allyGrid.grid[x][y].curStam = allyGrid.grid[x][y].maxStam; }
             }
         }
+
 
         #region Turn Order Setup
         private void setUpTurnOrder() {
