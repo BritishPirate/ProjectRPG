@@ -14,11 +14,13 @@ namespace ProjectRPG {
         }
 
         public static void printGrid(Grid grid) {
-            foreach(Creature[] row in grid.grid) {
+            int x;
+            int y = grid.grid.Length;
+            for(y = grid.grid.Length - 1;y >= 0;y--) {
                 Console.WriteLine();
-                foreach(Creature c in row) {
-                    if(c == null) { Console.Write("Empty | "); }
-                    else { Console.Write(c.name + " | "); }
+                for(x = 0; x < grid.grid.Length; x++) {
+                    if(grid.grid[x][y] == null) { Console.Write("Empty | "); }
+                    else { Console.Write(grid.grid[x][y].name + " | "); }
                 }
             }
             Console.WriteLine();
@@ -28,6 +30,15 @@ namespace ProjectRPG {
 
         public static void playerTurn() { Console.WriteLine("Your turn, what do you want to do?"); }
 
+        public static void PCAttack() { Console.WriteLine("You have attacked the enemy!"); }
+
         public static void enemyAttack() { Console.WriteLine("The enemy attacked you!"); }
+
+        public static void attackMenu() {
+            Console.WriteLine("Available Attacks: ");
+            Console.WriteLine();
+            Console.Write("Basic Attack, ");
+            Console.Write("Heavy Attack, ");
+        }
     }
 }

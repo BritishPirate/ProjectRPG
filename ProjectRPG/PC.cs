@@ -9,11 +9,15 @@ namespace ProjectRPG {
                 case pcs.Fighter:
                     this.name = "Fighter";
                     this.hp = 20;
-                    this.speed = 1;
+                    this.speed = 2;
+                    this.maxMana = 2;
+                    this.maxStam = 5;
                     break;
                 default:
                     break;
             }
+            this.curMana = this.maxMana;
+            this.maxStam = this.maxStam;
         }
     }
     enum pcs {

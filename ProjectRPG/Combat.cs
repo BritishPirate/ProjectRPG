@@ -8,9 +8,9 @@ namespace ProjectRPG {
         private Grid allyGrid = new Grid(3, 3);
         private List<(int x, int y, int speed, bool enemy)> turnOrder = new List<(int x, int y, int speed, bool enemy)>();
         public Combat() {
-            enemyGrid.grid[0][0] = new Enemy(EnemyType.Skeleton);
+            //enemyGrid.grid[0][0] = new Enemy(EnemyType.Skeleton);
             enemyGrid.grid[0][1] = new Enemy(EnemyType.Goblin);
-            enemyGrid.grid[0][2] = new Enemy(EnemyType.Skeleton);
+            //enemyGrid.grid[0][2] = new Enemy(EnemyType.Skeleton);
             allyGrid.grid[1][1] = new PC(pcs.Fighter);
         }
 
@@ -52,9 +52,31 @@ namespace ProjectRPG {
             }
             return false;
         }
-        public void dealDamage(bool target, int x, int y, int damage) {
-            if(target) { enemyGrid.grid[x][y].hp -= damage; }
+        public void dealDamage(bool enemy, int x, int y, int damage) {
+            if(enemy) { enemyGrid.grid[x][y].hp -= damage; }
             else { allyGrid.grid[x][y].hp -= damage; }
+        }
+
+        public void loseStam(bool enemy, int x, int y, int amount) {
+            if(enemy) { 
+                enemyGrid.grid[x][y].curStam -= amount;
+                if(enemyGrid.grid[x][y].curStam < 0) { enemyGrid.grid[x][y].curStam = 0; }
+            }
+            else {
+                allyGrid.grid[x][y].curStam -= amount;
+                if(allyGrid.grid[x][y].curStam < 0) { allyGrid.grid[x][y].curStam = 0; }
+            }
+        }
+
+        public void loseMana(bool enemy, int x, int y, int amount) {
+            if(enemy) {
+                enemyGrid.grid[x][y].curMana -= amount;
+                if(enemyGrid.grid[x][y].curMana < 0) { enemyGrid.grid[x][y].curMana = 0; }
+            }
+            else {
+                allyGrid.grid[x][y].curMana -= amount;
+                if(allyGrid.grid[x][y].curMana < 0) { allyGrid.grid[x][y].curMana = 0; }
+            }
         }
 
         #region Turn Order Setup

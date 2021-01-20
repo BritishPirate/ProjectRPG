@@ -4,8 +4,12 @@ using System.Text;
 
 namespace ProjectRPG {
     class Attacks : Actions {
-        public static void attack(bool target, int x, int y, int damage, Combat combat) {
-            combat.dealDamage(target, x, y, damage);
+        public static void attack(bool enemy, int x, int y, int damage, Combat combat) {
+            combat.dealDamage(enemy, x, y, damage);
+        }
+        public static void heavyAttack(bool enemy, int x, int y, int damage, Combat combat) {
+            combat.dealDamage(enemy, x, y, damage * 2);
+            combat.loseStam(enemy, x, y, 1);
         }
     }
 }
