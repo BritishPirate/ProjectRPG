@@ -52,9 +52,23 @@ namespace ProjectRPG {
             }
             return false;
         }
+
+        public void applyRegen(bool enemy, int x, int y) {
+            if(enemy) {
+                enemyGrid.grid[x][y].curHP += enemyGrid.grid[x][y].regenHP;
+                enemyGrid.grid[x][y].curMana += enemyGrid.grid[x][y].regenMana;
+                enemyGrid.grid[x][y].maxStam += enemyGrid.grid[x][y].regenStam;
+            }
+            else {
+                allyGrid.grid[x][y].curHP += allyGrid.grid[x][y].regenHP;
+                allyGrid.grid[x][y].curMana += allyGrid.grid[x][y].regenMana;
+                allyGrid.grid[x][y].maxStam += allyGrid.grid[x][y].regenStam;
+            }
+        }
+
         public void dealDamage(bool enemy, int x, int y, int damage) {
-            if(enemy) { enemyGrid.grid[x][y].hp -= damage; }
-            else { allyGrid.grid[x][y].hp -= damage; }
+            if(enemy) { enemyGrid.grid[x][y].curHP -= damage; }
+            else { allyGrid.grid[x][y].curHP -= damage; }
         }
 
         public void loseStam(bool enemy, int x, int y, int amount) {

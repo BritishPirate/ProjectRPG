@@ -6,7 +6,7 @@ namespace ProjectRPG {
     class Printer {
         public static void info(Grid allyGrid, Grid enemyGrid) {
             Console.WriteLine();
-            Console.WriteLine("Player HP: " + allyGrid.grid[1][1].hp);
+            Console.WriteLine("Player HP: " + allyGrid.grid[1][1].curHP);
             Console.WriteLine("allies");
             printGrid(allyGrid);
             Console.WriteLine("enemies");

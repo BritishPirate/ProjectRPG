@@ -7,17 +7,19 @@ namespace ProjectRPG {
         public PC(pcs character) {
             switch(character) {
                 case pcs.Fighter:
-                    this.name = "Fighter";
-                    this.hp = 20;
-                    this.speed = 2;
-                    this.maxMana = 2;
-                    this.maxStam = 5;
+                    name = "Fighter";
+                    maxHP = 20;
+                    speed = 2;
+                    maxMana = 2;
+                    maxStam = 5;
+                    regenStam = 1;
                     break;
                 default:
                     break;
             }
-            this.curMana = this.maxMana;
-            this.maxStam = this.maxStam;
+            curHP = maxHP;
+            curMana = maxMana;
+            curStam = maxStam;
         }
     }
     enum pcs {

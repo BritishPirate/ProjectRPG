@@ -5,6 +5,11 @@ using System.Text;
 namespace ProjectRPG {
     class EnemyTurn : Turn {
         public EnemyTurn(int x, int y, Combat combat) : base(x, y, combat) {
+            combat.applyRegen(true, x, y);
+            MainSequence(x, y, combat);
+        }
+
+        private void MainSequence(int x, int y, Combat combat) {
             Printer.enemyAttack();
             Attacks.attack(false, 1, 1, 1, combat);
         }

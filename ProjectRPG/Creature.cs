@@ -4,17 +4,21 @@ using System.Text;
 
 namespace ProjectRPG {
     class Creature {
-        public string name { get; set; }
-        public int hp { get; set; }
-        public int maxMana { get; set; }
-        public int curMana { get; set; }
-        public int maxStam { get; set; }
-        public int curStam { get; set; }
-        public int speed { get; set; }
-        public int attack { get; set; }
+        public string name;
+        public int maxHP;
+        public int curHP;
+        public int regenHP;
+        public int maxMana;
+        public int curMana;
+        public int regenMana = 0;
+        public int maxStam;
+        public int curStam;
+        public int regenStam = 0;
+        public int speed;
+        public int attack;
         public bool isDead() {
             if(this == null) { return false; }
-            if(this.hp <= 0) { return true; }
+            if(this.curHP <= 0) { return true; }
             return false;
         }
     }
