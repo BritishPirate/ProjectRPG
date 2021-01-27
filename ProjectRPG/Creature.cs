@@ -16,6 +16,8 @@ namespace ProjectRPG {
         public int regenStam = 0;
         public int speed;
         public int attack;
+        public Dictionary<lose, int> loseMult = new Dictionary<lose, int>();
+        public Dictionary<gain, int> gainMult = new Dictionary<gain, int>();
         public bool isDead() {
             if(this == null) { return false; }
             if(this.curHP <= 0) { return true; }
