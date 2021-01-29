@@ -68,59 +68,78 @@ namespace ProjectRPG {
         }
 
         public void loseHealth(bool enemy, int x, int y, int amount, lose[] type) {
-            if(enemy) { enemyGrid.grid[x][y].curHP -= amount; }
-            else { allyGrid.grid[x][y].curHP -= amount; }
+            if(enemy) { enemyGrid.grid[x][y].curHP -= (int)Math.Round(amount * loseMultCalc(enemyGrid.grid[x][y], type), 0); }
+            else { allyGrid.grid[x][y].curHP -= (int)Math.Round(amount * loseMultCalc(allyGrid.grid[x][y], type), 0); }
         }
 
         public void gainHealth(bool enemy, int x, int y, int amount, gain[] type) {
-            if(enemy) { enemyGrid.grid[x][y].curHP += amount; }
-            else { allyGrid.grid[x][y].curHP += amount; }
+            if(enemy) { enemyGrid.grid[x][y].curHP += (int)Math.Round(amount * gainMultCalc(enemyGrid.grid[x][y], type), 0); }
+            else { allyGrid.grid[x][y].curHP += (int)Math.Round(amount * gainMultCalc(allyGrid.grid[x][y], type), 0); }
         }
 
         public void loseMana(bool enemy, int x, int y, int amount, lose[] type) {
             if(enemy) {
-                enemyGrid.grid[x][y].curMana -= amount;
+                enemyGrid.grid[x][y].curMana -= (int)Math.Round(amount * loseMultCalc(enemyGrid.grid[x][y], type), 0);
                 if(enemyGrid.grid[x][y].curMana < 0) { enemyGrid.grid[x][y].curMana = 0; }
             }
             else {
-                allyGrid.grid[x][y].curMana -= amount;
+                allyGrid.grid[x][y].curMana -= (int)Math.Round(amount * loseMultCalc(allyGrid.grid[x][y], type), 0);
                 if(allyGrid.grid[x][y].curMana < 0) { allyGrid.grid[x][y].curMana = 0; }
             }
         }
 
         public void gainMana(bool enemy, int x, int y, int amount, gain[] type) {
             if(enemy) {
-                enemyGrid.grid[x][y].curMana += amount;
+                enemyGrid.grid[x][y].curMana += (int)Math.Round(amount * gainMultCalc(enemyGrid.grid[x][y], type), 0);
                 if(enemyGrid.grid[x][y].curMana > enemyGrid.grid[x][y].maxMana) { enemyGrid.grid[x][y].curMana = enemyGrid.grid[x][y].maxMana; }
             }
             else {
-                allyGrid.grid[x][y].curMana += amount;
+                allyGrid.grid[x][y].curMana += (int)Math.Round(amount * gainMultCalc(allyGrid.grid[x][y], type), 0);
                 if(allyGrid.grid[x][y].curMana > allyGrid.grid[x][y].maxMana) { allyGrid.grid[x][y].curMana = allyGrid.grid[x][y].maxMana; }
             }
         }
 
         public void loseStam(bool enemy, int x, int y, int amount, lose[] type) {
             if(enemy) { 
-                enemyGrid.grid[x][y].curStam -= amount;
+                enemyGrid.grid[x][y].curStam -= (int)Math.Round(amount * loseMultCalc(enemyGrid.grid[x][y], type), 0);
                 if(enemyGrid.grid[x][y].curStam < 0) { enemyGrid.grid[x][y].curStam = 0; }
             }
             else {
-                allyGrid.grid[x][y].curStam -= amount;
+                allyGrid.grid[x][y].curStam -= (int)Math.Round(amount * loseMultCalc(enemyGrid.grid[x][y], type), 0);
                 if(allyGrid.grid[x][y].curStam < 0) { allyGrid.grid[x][y].curStam = 0; }
             }
         }
 
         public void gainStam(bool enemy, int x, int y, int amount, gain[] type) {
             if(enemy) {
-                enemyGrid.grid[x][y].curStam += amount;
+                enemyGrid.grid[x][y].curStam += (int)Math.Round(amount * gainMultCalc(enemyGrid.grid[x][y], type), 0);
                 if(enemyGrid.grid[x][y].curStam > enemyGrid.grid[x][y].maxStam) { enemyGrid.grid[x][y].curStam = enemyGrid.grid[x][y].maxStam; }
             }
             else {
-                allyGrid.grid[x][y].curStam += amount;
+                allyGrid.grid[x][y].curStam += (int)Math.Round(amount * gainMultCalc(allyGrid.grid[x][y], type), 0);
                 if(allyGrid.grid[x][y].curStam > allyGrid.grid[x][y].maxStam) { allyGrid.grid[x][y].curStam = allyGrid.grid[x][y].maxStam; }
             }
         }
 
+        private float loseMultCalc(Creature c, lose[] type) {
+            float mult = 1;
+            foreach(lose l in type) {
+                if(c.loseMult.ContainsKey(l)) {
+                    mult = mult * c.loseMult[l];
+                }
+            }
+            return mult;
+        }
+
+        private float gainMultCalc(Creature c, gain[] type) {
+            float mult = 1;
+            foreach(gain l in type) {
+                if(c.gainMult.ContainsKey(l)) {
+                    mult = mult * c.gainMult[l];
+                }
+            }
+            return mult;
+        }
 
         #region Turn Order Setup
         private void setUpTurnOrder() {
