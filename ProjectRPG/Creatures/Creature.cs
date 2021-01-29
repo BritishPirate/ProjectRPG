@@ -18,10 +18,24 @@ namespace ProjectRPG {
         public int attack;
         public Dictionary<lose, int> loseMult = new Dictionary<lose, int>();
         public Dictionary<gain, int> gainMult = new Dictionary<gain, int>();
+        public List<StatusEffect> statusEffects = new List<StatusEffect>();
         public bool isDead() {
             if(this == null) { return false; }
             if(this.curHP <= 0) { return true; }
             return false;
+        }
+
+        public void tickStatusEffects() { //TODO: Add a way to comfortably choose a specific effect to tick
+
+        }
+        public void updateStatusEffects() {
+            int i = 0;
+            foreach(StatusEffect effect in statusEffects) {
+                if(effect.amount == 0 || effect.duration == 0) {
+                    statusEffects.RemoveAt(i);
+                }
+                i++;
+            }
         }
     }
 }
