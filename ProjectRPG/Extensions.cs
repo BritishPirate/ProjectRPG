@@ -16,6 +16,5 @@ namespace ProjectRPG {
             for(int i = 0; i < b.Count;i++) { list.Add(b[i]); }
             return list;
         }
-
     }
 }
