@@ -5,7 +5,7 @@ using System.Text;
 namespace ProjectRPG { 
     class PCTurn : Turn {
         public PCTurn(int x, int y, Combat combat) : base(x, y, combat) {
-            combat.applyRegen(false, x, y);
+            combat.allyGrid.grid[x][y].applyRegen();
             MainSequence(x, y, combat);
         }
 

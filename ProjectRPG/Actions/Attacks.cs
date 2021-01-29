@@ -5,7 +5,8 @@ using System.Text;
 namespace ProjectRPG {
     class Attacks : Actions {
         public static void attack(bool enemy, int x, int y, int damage, Combat combat) {
-            combat.loseHealth(enemy, x, y, damage, new lose[] {lose.physical });
+            if(enemy) { combat.enemyGrid.grid[x][y].loseHealth(damage, new lose[] { lose.physical }); }
+            else { combat.allyGrid.grid[x][y].loseHealth(damage, new lose[] { lose.physical }); }
         }
         public static void heavyAttack(bool enemy, int x, int y, int damage, Combat combat) {
             combat.loseHealth(enemy, x, y, damage * 2, new lose[] { lose.physical });

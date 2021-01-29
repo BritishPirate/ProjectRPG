@@ -4,8 +4,8 @@ using System.Text;
 
 namespace ProjectRPG {
     class Combat {
-        private Grid enemyGrid = new Grid(3, 3);
-        private Grid allyGrid = new Grid(3, 3);
+        public Grid enemyGrid = new Grid(3, 3);
+        public Grid allyGrid = new Grid(3, 3);
         private List<(int x, int y, int speed, bool enemy)> turnOrder = new List<(int x, int y, int speed, bool enemy)>();
         public Combat() {
             //enemyGrid.grid[0][0] = new Enemy(EnemyType.Skeleton);
@@ -51,20 +51,6 @@ namespace ProjectRPG {
                 }
             }
             return false;
-        }
-        
-        public void applyRegen(bool enemy, int x, int y) {
-            gain[] types = new gain[] { gain.natural, gain.regeneration };
-            if(enemy) {
-                gainHealth(enemy, x, y, enemyGrid.grid[x][y].regenHP, types);
-                gainMana(enemy, x, y, enemyGrid.grid[x][y].regenMana, types);
-                gainStam(enemy, x, y, enemyGrid.grid[x][y].regenStam, types);
-            }
-            else {
-                gainHealth(enemy, x, y, allyGrid.grid[x][y].regenHP, types);
-                gainMana(enemy, x, y, allyGrid.grid[x][y].regenMana, types);
-                gainStam(enemy, x, y, allyGrid.grid[x][y].regenStam, types);
-            }
         }
 
         public void loseHealth(bool enemy, int x, int y, int amount, lose[] type) {
